@@ -1,6 +1,6 @@
 node_modules
-database/*
-!database/models*
-!database/index.js~
+models/*
+!models/models*
+!models/index.js~
 .DS_Store
 .env

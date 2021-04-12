@@ -1,8 +1,10 @@
-const User = require('../database/models/user.model');
+const User = require('../models/User');
+
 
 exports.usersPage = (req, res) => {
   User.find()
   .then(users => {
+    console.log(users)
     res.render('users-list', { users });
   })
   .catch(error => {

@@ -1,9 +1,11 @@
-const { resolve } = require('path');
+
 
 exports.homePageCtrl = (req, res) => {
-  res.render('index');
+  res.render('auth/login',{
+    title:"Moineau bleu"
+  });
 };
 
 exports.booksPageCtrl = (req, res) => {
-  res.sendFile(resolve('views', 'books-list.html'));
+  res.render('user-list');
 };
