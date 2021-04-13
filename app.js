@@ -2,9 +2,31 @@ const twig = require("twig");
 const express = require('express');
 const { resolve } = require('path');
 const router = require('./router');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var upload = multer();
 require('./models');
 
 const app = express();
+
+
+/*
+* uploads
+* */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(upload.array());
+//session
+
+
+app.use(cookieParser());
+app.use(session({
+    secret: "Chut !, its a secret!",
+    resave: true,
+    saveUninitialized: true
+}));
 
 // Configuration
 app.set('view engine', 'twig');

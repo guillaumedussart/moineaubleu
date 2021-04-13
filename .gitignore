@@ -1,6 +1,7 @@
 node_modules
-models/*
 !models/models*
 !models/index.js~
 .DS_Store
 .env
+.sass-cache
+.idea

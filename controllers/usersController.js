@@ -39,3 +39,7 @@ exports.signIn = async (req, res, next) => {
 	await findUser(req.body);
 
 }
+
+exports.profilPage = (req,res,next) =>{
+console.log(next)
+}

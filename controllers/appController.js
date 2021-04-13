@@ -1,7 +1,8 @@
 
 
 exports.homePageCtrl = (req, res) => {
-  res.render('auth/login',{
+
+  res.render('pages/index',{
     title:"Moineau bleu"
   });
 };

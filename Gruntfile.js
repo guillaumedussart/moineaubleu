@@ -4,6 +4,12 @@ module.exports = function (grunt) {
 			compass: {
 				files: ['public/scss/*.scss'],
 				tasks: ['compass:dev']
+			},
+			server: {
+				files: ['.rebooted'],
+				options: {
+					livereload: true
+				}
 			}
 		},
 		compass: {
@@ -17,7 +23,8 @@ module.exports = function (grunt) {
 		concurrent: {
 			dev: [
 				'nodemon',
-				'watch'
+				'watch',
+				'browserSync'
 			],
 			options: {
 				logConcurrentOutput: true
@@ -35,7 +42,7 @@ module.exports = function (grunt) {
 						});
 					},
 					env: {
-						PORT: '8181'
+						PORT: '8000'
 					},
 					cwd: __dirname,
 					ignore: ['node_modules/**'],
@@ -52,12 +59,12 @@ module.exports = function (grunt) {
 			}
 		},
 		browserSync: {
-			dev: {
-				bsFiles: {
-					src : [
-						'public/css/*.css',
-						'templates/**/*.twig'
-					]
+			bsFiles: {
+				src : 'assets/css/*.css'
+			},
+			options: {
+				server: {
+					baseDir: "./bin"
 				}
 			}
 		}
