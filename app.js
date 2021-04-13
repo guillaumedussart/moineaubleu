@@ -25,7 +25,8 @@ app.use(cookieParser());
 app.use(session({
     secret: "Chut !, its a secret!",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    MemoryStore:true
 }));
 
 // Configuration

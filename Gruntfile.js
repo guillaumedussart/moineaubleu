@@ -23,8 +23,7 @@ module.exports = function (grunt) {
 		concurrent: {
 			dev: [
 				'nodemon',
-				'watch',
-				'browserSync'
+				'watch'
 			],
 			options: {
 				logConcurrentOutput: true
@@ -46,8 +45,8 @@ module.exports = function (grunt) {
 					},
 					cwd: __dirname,
 					ignore: ['node_modules/**'],
-					ext: 'js',
-					watch: ['server'],
+					ext: 'js,twig,css,js',
+					watch: ['.'],
 					delay: 1000,
 					legacyWatch: true
 				}

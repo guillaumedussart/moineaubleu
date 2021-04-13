@@ -1,5 +1,5 @@
 const User = require('../models/User');
-
+const {findUser, saveUser} = require('../queries/usersQueries')
 
 exports.usersPage = (req, res) => {
 	User.find().then(users => {
@@ -15,6 +15,8 @@ exports.usersPage = (req, res) => {
 * page auth return
 * */
 exports.signInPage = (req, res) => {
+	let user =
+	console.log('login ' + req.session.user);
 	res.render('auth/login', {
 		title: "Se connecter"
 	});
@@ -29,17 +31,18 @@ exports.signUpPage = (req, res) => {
 *
 * */
 exports.signUp = async (req, res) => {
-
-	await saveUser(req.body);
-	res.redirect('auth/login');
+	console.log(req.body)
+	await saveUser(req.body, req, res);
+	res.redirect('/users/signin');
+	res.end();
 
 }
 
 exports.signIn = async (req, res, next) => {
-	await findUser(req.body);
+	await findUser(req,res);
 
 }
 
-exports.profilPage = (req,res,next) =>{
-console.log(next)
+exports.profilPage = (req, res, next) => {
+	console.log(next)
 }
