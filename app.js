@@ -3,23 +3,27 @@ const express = require('express');
 const { resolve } = require('path');
 const router = require('./router');
 const cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session')
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var upload = multer();
+const cookieSession = require('cookie-session')
+const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
+//const multer = require('multer');
+//const upload = multer({ dest: __dirname + '/public/uploads/' });
 require('./models');
 
 const app = express();
 
 
 /*
-* uploads
-* */
+ * uploads
+ * */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(upload.array());
+//app.use(upload.array());
 //session
-
+// enable files upload
+app.use(fileUpload({
+    createParentPath: true
+}));
 
 app.use(cookieParser());
 app.use(cookieSession({
@@ -37,16 +41,16 @@ app.set('views', 'templates');
  *
  * */
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 
 /*
-*
-*
-* implement public folder
-*
-* */
+ *
+ *
+ * implement public folder
+ *
+ * */
 app.use('/static', express.static(resolve('public')));
 app.use('/', router);
 

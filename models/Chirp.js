@@ -1,19 +1,21 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
+const User = require('../models/User');
 
-const chirpSchema = mongoose.Schema({
-	text: {
-		type: String,
-		required: [true, "Text is required !"],
-	},
-	user_id: {
-		type: Number,
-	},
-	like: {
-		type: Number,
-	}
+const chirpSchema = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    text: {
+        type: String,
+        required: [true, "Text is required !"],
+    },
+    like: {
+        type: Number,
+    },
 });
 
 
 
-const Chirp = mongoose.model('chirps', userSchema);
+const Chirp = model('Chirp', chirpSchema);
 module.exports = Chirp;
