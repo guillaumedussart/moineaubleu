@@ -1,9 +1,8 @@
 const User = require('../models/User');
-const {findUser, saveUser} = require('../queries/usersQueries')
+const {findUser, saveUser, updateProfil} = require('../queries/users.queries')
 
 exports.usersPage = (req, res) => {
 	User.find().then(users => {
-		console.log(users)
 		res.render('users-list', {users});
 	}).catch(error => {
 		console.error(error);
@@ -15,14 +14,26 @@ exports.usersPage = (req, res) => {
 * page auth return
 * */
 exports.signInPage = (req, res) => {
-	let user =
-	console.log('login ' + req.session.user);
 	res.render('auth/login', {
-		title: "Se connecter"
+		title: 'Signin'
 	});
 }
 exports.signUpPage = (req, res) => {
-	res.render('auth/register');
+	res.render('auth/register', {
+		title: 'Signin'
+	});
+}
+exports.profilPage = (req, res, next) => {
+	res.render('pages/profile', {
+		title: 'Profile',
+		session: req.session,
+		url: req.originalUrl
+	});
+}
+exports.logoutProfil = (req, res, next) => {
+	//req.logout();
+	req.session = null;
+	res.redirect('/');
 }
 
 /*
@@ -31,7 +42,6 @@ exports.signUpPage = (req, res) => {
 *
 * */
 exports.signUp = async (req, res) => {
-	console.log(req.body)
 	await saveUser(req.body, req, res);
 	res.redirect('/users/signin');
 	res.end();
@@ -39,10 +49,8 @@ exports.signUp = async (req, res) => {
 }
 
 exports.signIn = async (req, res, next) => {
-	await findUser(req,res);
-
+	await findUser(req, res);
 }
-
-exports.profilPage = (req, res, next) => {
-	console.log(next)
+exports.updateProfil = async (req, res, next) => {
+	await updateProfil(req,res)
 }

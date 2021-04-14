@@ -3,7 +3,7 @@ const express = require('express');
 const { resolve } = require('path');
 const router = require('./router');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
+var cookieSession = require('cookie-session')
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var upload = multer();
@@ -22,12 +22,10 @@ app.use(upload.array());
 
 
 app.use(cookieParser());
-app.use(session({
-    secret: "Chut !, its a secret!",
-    resave: true,
-    saveUninitialized: true,
-    MemoryStore:true
-}));
+app.use(cookieSession({
+    name: 'session',
+    keys: ['key1', 'key2']
+}))
 
 // Configuration
 app.set('view engine', 'twig');

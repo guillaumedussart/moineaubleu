@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {
   homePageCtrl,
-} = require('../controllers/appController');
+} = require('../controllers/index.controller');
 
 router.get('/', homePageCtrl);
 

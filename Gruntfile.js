@@ -1,17 +1,6 @@
 module.exports = function (grunt) {
 	grunt.initConfig({
-		watch: {
-			compass: {
-				files: ['public/scss/*.scss'],
-				tasks: ['compass:dev']
-			},
-			server: {
-				files: ['.rebooted'],
-				options: {
-					livereload: true
-				}
-			}
-		},
+
 		compass: {
 			dev: {
 				options: {
@@ -66,12 +55,25 @@ module.exports = function (grunt) {
 					baseDir: "./bin"
 				}
 			}
+		},
+		watch: {
+			compass: {
+				files: ['public/scss/*.scss'],
+				tasks: ['compass:dev']
+			},
+			server: {
+				files: ['.rebooted'],
+				options: {
+					livereload: true
+				}
+			}
 		}
 	});
 
 	// load npm tasks
 	grunt.loadNpmTasks('grunt-concurrent');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-browser-sync');
 	grunt.loadNpmTasks('grunt-nodemon');
