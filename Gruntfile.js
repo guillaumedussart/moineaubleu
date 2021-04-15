@@ -22,38 +22,26 @@ module.exports = function (grunt) {
 			dev: {
 				script: './bin/www',
 				options: {
-					args: ['dev'],
-					nodeArgs: ['-r','dotenv/config'],
-					callback: function (nodemon) {
-						nodemon.on('log', function (event) {
-							console.log(event.colour);
-						});
-					},
-					env: {
-						PORT: '8000'
-					},
+
 					cwd: __dirname,
 					ignore: ['node_modules/**'],
-					ext: 'js,twig,css,js',
+					ext: 'js,twig,css',
 					watch: ['.'],
 					delay: 1000,
-					legacyWatch: true
-				}
-			},
-			exec: {
-				options: {
-					exec: 'less'
-				}
-			}
-		},
-		browserSync: {
-			bsFiles: {
-				src : 'assets/css/*.css'
-			},
-			options: {
-				server: {
-					baseDir: "./bin"
-				}
+					legacyWatch: true,
+					callback: function (nodemon) {
+
+
+						// refreshes browser when server reboots
+						nodemon.on('restart', function () {
+							// Delay before server listens on port
+							setTimeout(function () {
+								require('fs').writeFileSync('.rebooted', 'rebooted');
+							}, 1000);
+						});
+					}
+				},
+
 			}
 		},
 		watch: {

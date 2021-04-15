@@ -1,6 +1,9 @@
 const { Schema, model } = require('mongoose');
 const Chirp = require('../models/Chirp');
 const bcrypt = require('bcrypt');
+const {
+    hashRounds
+} = require('../environement');
 
 const userSchema = new Schema({
     _id: Schema.Types.ObjectId,
@@ -33,7 +36,7 @@ const userSchema = new Schema({
 });
 
 userSchema.statics.hashPassword = (password) => {
-    return bcrypt.hashSync(password, process.env.HASH_ROUNDS);
+    return bcrypt.hashSync(password, hashRounds);
 }
 
 const User = model('User', userSchema);

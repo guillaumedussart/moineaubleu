@@ -1,15 +1,11 @@
 const mongoose = require('mongoose');
 const {
-    DB_PROTOCOL,
-    DB_HOST,
-    DB_USER,
-    DB_PASSWORD,
-    DB_NAME,
-} = process.env;
+    db
+} = require('../environement');
 
 mongoose
     .connect(
-        `${DB_PROTOCOL}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
+        `${db.protocol}://${db.user}:${db.password}@${db.host}/${db.name}?${db.options}`,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,

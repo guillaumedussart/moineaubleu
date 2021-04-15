@@ -1,4 +1,18 @@
 const app = require('../app');
-const PORT = process.env.PORT || '3000';
+const {ports,ssl} = require('../environement');
+const http = require('http');
+const https = require('https');
+const { readFileSync } = require('fs');
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
+http.createServer((req,res)=>{
+	const redirectUrl = `https://${req.headers.host.split(':')[0]}:${ports.https}${req.url}`;
+	res.writeHead(301,{'Location':redirectUrl})
+	res.end('ok')
+}).listen(ports.http)
+
+const cert = readFileSync(ssl.cert);
+const key = readFileSync(ssl.key);
+
+
+https.createServer({cert,key},app).listen(ports.https);

@@ -53,5 +53,4 @@ app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
  * */
 app.use('/static', express.static(resolve('public')));
 app.use('/', router);
-
 module.exports = app;
