@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {checkAuth} = require('../middleware/check-auth.middleware')
+const {checkAuth} = require('../middleware/check-auth.middleware');
 const {
 	createChirpPage,
 	createChirp

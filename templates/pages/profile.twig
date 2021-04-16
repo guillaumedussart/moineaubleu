@@ -8,80 +8,87 @@
         <section class="section">
 
             <div class="container">
-                <form action="/users/updateProfil" method="post" enctype="multipart/form-data">
-                    <div class="card card-profile shadow mt--300">
-                        <div class="px-4">
-                            <div class="row justify-content-center">
-                                <div class="col-3 mt-5">
-                                    <h3 class="text-center">Followers</h3>
-                                    <p>{{ session.user.follower }}</p>
-                                    <h3 class="text-center">Chirps</h3>
-                                    <p>{{ session.user.chirps }}</p>
-                                </div>
-                                <div class="col-lg-3 order-lg-2">
-                                    <div class="card-profile-image">
-                                        <div class="avatar-upload">
-                                            {% if error == true %}
-                                                {% for errorReturn in errors %}
-                                                    <div class="errors">{{ errorReturn }}</div>
-                                                {% endfor %}
-                                            {% endif %}
-                                            <div class="avatar-edit">
-                                                <input type='file' id="imageUpload" name="photo"
-                                                       accept=".png, .jpg, .jpeg"/>
-                                                <label for="imageUpload"></label>
-                                            </div>
-                                            <div class="avatar-preview">
-                                                {% if session.user.image is empty %}
-                                                    <div id="imagePreview"
-                                                         style="background-image: url(/static/images/profil/profil.png);">
-                                                    </div>
-                                                {% else %}
-                                                    <div id="imagePreview"
-                                                         style="background-image: url({{ session.user.image }});">
-                                                    </div>
-                                                {% endif %}
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                                    <div class="card-profile-actions py-4 mt-lg-0">
-                                        <button type="submit" class="btn btn-sm btn-info mr-4">Update</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-5">
-                                <input type="hidden" value="{{ session.user.id }}" name="id">
-                                <div class="h6 font-weight-300"><input type="text" class="form-control" name="name"
-                                                                       value="{{ session.user.name }}"
-                                                                       placeholder="Name"></div>
-                                <div class="h6 font-weight-300"><input type="text" class="form-control" name="username"
-                                                                       value="{{ session.user.username }}"
-                                                                       placeholder="Username"></div>
-                                <div class="h6 font-weight-300"><input type="text" name="email" class="form-control"
-                                                                       value="{{ session.user.email }}"
-                                                                       placeholder="Email">
-                                </div>
-                                <div class="h6 font-weight-300"><input type="password" name="password"
-                                                                       class="form-control" placeholder="New password">
-                                </div>
-                            </div>
-                            <div class="mt-5 py-5 text-center">
+                <div class="col-md-5">
+                    <form action="/users/updateProfil" method="post" enctype="multipart/form-data">
+                        <div class="card card-profile shadow mt--300">
+                            <div class="px-4">
                                 <div class="row justify-content-center">
-                                    <div class="col-lg-12">
+                                    <div class="col-3 mt-5">
+                                        <h3 class="text-center">Followers</h3>
+                                        <p>{{ session.user.follower }}</p>
+                                        <h3 class="text-center">Chirps</h3>
+                                        <p>{{ session.user.chirps }}</p>
+                                    </div>
+                                    <div class="col-lg-3 order-lg-2">
+                                        <div class="card-profile-image">
+                                            <div class="avatar-upload">
+                                                {% if error == true %}
+                                                    {% for errorReturn in errors %}
+                                                        <div class="errors">{{ errorReturn }}</div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <div class="avatar-edit">
+                                                    <input type='file' id="imageUpload" name="photo"
+                                                           accept=".png, .jpg, .jpeg"/>
+                                                    <label for="imageUpload"></label>
+                                                </div>
+                                                <div class="avatar-preview">
+                                                    {% if session.user.image is empty %}
+                                                        <div id="imagePreview"
+                                                             style="background-image: url(/static/images/profil/profil.png);">
+                                                        </div>
+                                                    {% else %}
+                                                        <div id="imagePreview"
+                                                             style="background-image: url({{ session.user.image }});">
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
 
-                                        <label for="description">Describe you</label>
-                                        <textarea class="form-control" name="description"
-                                                  id="description">{{ session.user.description }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                                        <div class="card-profile-actions py-4 mt-lg-0">
+                                            <button type="submit" class="btn btn-sm btn-info mr-4">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-5">
+                                    <input type="hidden" value="{{ session.user.id }}" name="id">
+                                    <div class="h6 font-weight-300"><input type="text" class="form-control" name="name"
+                                                                           value="{{ session.user.name }}"
+                                                                           placeholder="Name"></div>
+                                    <div class="h6 font-weight-300"><input type="text" class="form-control"
+                                                                           name="username"
+                                                                           value="{{ session.user.username }}"
+                                                                           placeholder="Username"></div>
+                                    <div class="h6 font-weight-300"><input type="text" name="email" class="form-control"
+                                                                           value="{{ session.user.email }}"
+                                                                           placeholder="Email">
+                                    </div>
+                                    <div class="h6 font-weight-300"><input type="password" name="password"
+                                                                           class="form-control"
+                                                                           placeholder="New password">
+                                    </div>
+                                </div>
+                                <div class="mt-5 py-5 text-center">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-12">
 
+                                            <label for="description">Describe you</label>
+                                            <textarea class="form-control" name="description"
+                                                      id="description">{{ session.user.description }}</textarea>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <div class="col-md-7">
+
+                </div>
             </div>
         </section>
 
