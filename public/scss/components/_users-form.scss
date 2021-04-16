@@ -1,0 +1,33 @@
+.users-form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+  .users-form form > div {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    margin-bottom: 5px;
+  }
+  .users-form form > .errors {
+    width: 300px;
+    font-size: 0.7rem;
+    color: red;
+    margin: auto;
+    margin-top: 5px;
+  }
+  .users-form form > div:last-of-type {
+    text-align: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
+    button[type="submit"] {
+      background: var(--secondary-color);
+      padding: 10px 0px;
+      border-radius: 20px;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      cursor: pointer;
+    }

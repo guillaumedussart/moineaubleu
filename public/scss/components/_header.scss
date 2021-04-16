@@ -1,0 +1,13 @@
+header {
+  padding: 0 5px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  background: var(--primary-color);
+  box-shadow: 1px 1px 5px #444;
+  min-width: 830px;
+}
+  header .logo img {
+    width: 60px;
+    margin: 0 10px;
+  }

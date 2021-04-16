@@ -1,0 +1,33 @@
+.profile-container {
+  grid-area: profile;
+  width: 250px;
+  height: 250px;
+  margin-left: 60px;
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+  border-radius: 5px;
+  display: grid;
+  gap: 30px;
+  grid-template-areas:  "avatar avatar"
+                        "touite follows";
+}
+
+.profile-container a {
+  background: var(--secondary-color);
+  padding: 10px 0px;
+  border-radius: 20px;
+  font-weight: bold;
+  width: 130px;
+  display: inline-block;
+}
+
+.profile-container > div:first-of-type {
+  grid-area: avatar;
+}
+.profile-container > div:nth-of-type(2) {
+  grid-area: touite;
+}
+.profile-container > div:last-of-type {
+  grid-area: follows;
+}

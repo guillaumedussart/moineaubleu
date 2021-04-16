@@ -1,6 +1,17 @@
-body {
-    background: gray;
-}
+/*
+IMPORTS
+*/
+@import "components/common";
+@import "components/header";
+@import "components/navbar";
+@import "components/users-form";
+@import "components/user-profile";
+@import "components/chirp";
+@import "components/footer";
+
+
+
+
 
 .avatar-upload {
     position: relative;

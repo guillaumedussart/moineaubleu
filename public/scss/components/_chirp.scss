@@ -1,0 +1,92 @@
+.touite-wrapper {
+  display: grid;
+  grid-template-areas: "profile touites";
+  grid-template-columns: 400px;
+  margin-top: 30px;
+}
+
+.touite-form {
+  margin: 30px;
+  padding: 3px 10px 10px;
+  background: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.touite-form textarea {
+  width: 90%;
+  resize: none;
+  padding-left: 5px;
+}
+
+.touite-form button {
+  margin-top: 20px;
+}
+
+.touite-form .errors {
+  list-style: none;
+  color: red;
+  font-weight: bold;
+}
+
+#touite-list-container {
+  grid-area: touites;
+  display: flex;
+  margin-right: 30px;
+  justify-content: flex-start;
+  flex-flow: column nowrap;
+  min-width: 200px;
+}
+
+.touite {
+  display: grid;
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+  gap: 8px;
+  border-radius: 5px;
+  grid-template-columns: 1fr 40px;
+  grid-template-areas:  "avatar icones"
+                        "touite icones";
+}
+
+@media screen and (max-width: 829px) {
+  .touite {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:  "avatar icones"
+                          "touite touite";
+  }
+}
+
+.touite .avatar {
+  grid-area: avatar;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+}
+  .touite .avatar img {
+    margin-right: 20px;
+  }
+  .touite .avatar span {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+  }
+.touite .icones {
+  grid-area: icones;
+  place-self: center;
+}
+  .touite .icones > * {
+    cursor: pointer;
+  }
+  .touite .icones > a {
+    margin-right: 10px;
+    color: #444;
+  }
+.touite .content {
+  grid-area: touite;
+  font-size: 1.1rem;
+  overflow: hidden;
+  white-space: wrap;
+  text-overflow: fade;
+}
