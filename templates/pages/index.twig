@@ -7,9 +7,9 @@
         <div class="container pt-3">
             <h3 class="text-center">Chirps</h3>
             {% for chirp in chirps %}
-            <div class="tweet-container _center"><img src="{{ chirp.user.image }}"/>
-                <div class="text-container"><strong class="name"><a class="text-dark" href="/users/profile/{{ chirp.user.username }}">{{ chirp.user.name }}</a></strong>
-                    <div class="nickname">@{{ chirp.user.username }}</div>
+            <div class="tweet-container _center"><img src="{{ chirp.author.image }}"/>
+                <div class="text-container"><strong class="name"><a class="text-dark" href="/users/profile/{{ chirp.author.username }}">{{ chirp.author.name }}</a></strong>
+                    <div class="nickname">@{{ chirp.author.username }}</div>
                 </div>
                 <div class="chirps container">{{ chirp.text }}</div>
                 <i class="fa fa-heart-o" aria-hidden="true"></i>{# non plein #}

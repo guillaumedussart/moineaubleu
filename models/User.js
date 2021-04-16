@@ -6,10 +6,8 @@ const {
 } = require('../environement');
 
 const userSchema = new Schema({
-    _id: Schema.Types.ObjectId,
     name: {
         type: String,
-        required: [true, "Name is required !"],
         unique: true,
     },
     username: {
@@ -33,7 +31,7 @@ const userSchema = new Schema({
     description: {
         type: String,
     },
-    chirps: [{ type: Schema.Types.ObjectId, ref: "Chirp" }],
+chirps:[{type: Schema.Types.ObjectId,ref:'Chirp'}]
 });
 
 userSchema.statics.hashPassword = (password) => {

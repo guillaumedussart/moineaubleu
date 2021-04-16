@@ -6,6 +6,6 @@ const {
 } = require('../controllers/chirps.controller');
 
 router.get('/new',checkAuth, createChirpPage);
-router.post('/new', createChirp);
+router.post('/new', checkAuth,createChirp);
 
 module.exports = router;

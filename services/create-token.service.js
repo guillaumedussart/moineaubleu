@@ -4,7 +4,7 @@ const { jwt: { secret }} = require('../environement');
 
 
 
-exports.createToken = ({_id,username,email,image,follows}) =>{
+exports.createToken = ({_id,username,email,image}) =>{
 
 	const payload  = {
 		sub:_id,

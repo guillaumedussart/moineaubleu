@@ -5,8 +5,7 @@ const {jwt: {secret}} = require('../environement');
 
 
 exports.homePageCtrl = async(req, res) => {
-    let chirps = await Chirp.find().populate('user').exec();
-    //let users = await User.find().populate("chirps").exec();
+    const chirps = await Chirp.find().populate('author').exec();
 
     res.render('pages/index', {
         title: 'Moineau bleu',

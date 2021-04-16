@@ -20,6 +20,7 @@ exports.saveUser = (user, req, res) => {
 		username: user.username,
 		password: passHash
 	});
+	console.log(insertUser)
 	return insertUser.save();
 }
 
@@ -59,6 +60,7 @@ exports.findUser = (req, res) => {
 				}
 			).catch(
 				(error) => {
+					console.log(error)
 					res.status(500).json({
 						error: error
 					});

@@ -9,8 +9,34 @@ IMPORTS
 @import "components/chirp";
 @import "components/footer";
 
-
-
+.tweet-container {
+    position: relative;
+    width: 700px;
+    height: 200px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(50, 120, 80, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    >img {
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+        margin-right: 24px;
+        display: block;
+    }
+    >.text-container {
+        align-items: center;
+    }
+    >.chirps {
+        width: 100%;
+        height: 100%;
+        margin-left: 15px;
+        align-items: unset;
+    }
+}
 
 $pink: #f65c8a;
 .like {

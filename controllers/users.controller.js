@@ -6,9 +6,6 @@ const sharp = require('sharp');
 const uploadsFolder = path.resolve('public/uploads/');
 
 
-
-
-
 exports.usersPage = (req, res) => {
 	User.find().then(users => {
 		res.render('users-list', {users});
@@ -31,9 +28,11 @@ exports.signUpPage = (req, res) => {
 		title: 'Signin'
 	});
 }
-exports.profilPage = (req, res, next) => {
+exports.profilPage = async (req, res, next) => {
 	const user = req.params.username;
+
 	const chirps = [];
+	console.log(await User.find().exec())
 	res.render('pages/profile', {
 		title: 'Profile',
 		session: req.session,
@@ -42,6 +41,7 @@ exports.profilPage = (req, res, next) => {
 }
 exports.logoutProfil = (req, res, next) => {
 	//req.logout();
+	res.clearCookie('jwt');
 	req.session = null;
 	res.redirect('/');
 }
@@ -55,7 +55,6 @@ exports.signUp = async (req, res) => {
 	try {
 		await saveUser(req.body, req, res);
 		res.redirect('/users/signin');
-		res.end();
 	} catch (e) {
 		res.render('/users/signup', {
 			error: true,
