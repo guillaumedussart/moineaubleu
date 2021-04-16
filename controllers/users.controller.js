@@ -4,6 +4,11 @@ const path = require('path');
 const fs = require('fs');
 const sharp = require('sharp');
 const uploadsFolder = path.resolve('public/uploads/');
+
+
+
+
+
 exports.usersPage = (req, res) => {
 	User.find().then(users => {
 		res.render('users-list', {users});
@@ -60,6 +65,7 @@ exports.signUp = async (req, res) => {
 exports.signIn = async (req, res, next) => {
 	try {
 		await findUser(req, res);
+
 	} catch (e) {
 		res.render('/users/signin', {
 			error: true,

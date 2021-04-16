@@ -8,7 +8,7 @@
                 <div class="col-lg-5">
                     <div class="card bg-secondary shadow border-0">
                         <div class="card-header bg-white pb-5">
-                            <div class="text-muted text-center mb-3">Create chirp</div>
+                            <div class="text-muted text-center mb-3">New chirp</div>
                             <div class="btn-wrapper text-center">
 
                             </div>
@@ -16,10 +16,11 @@
                         <div class="card-body px-lg-5 py-lg-5">
 
                             <form role="form" method="post" action="/chirps/new">
+                                <input type="hidden" value="{{ cookie }}">
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-alternative">
 
-                                        <textarea name="chirp" id="chirp" cols="30" rows="10"></textarea>
+                                        <textarea name="chirp" id="chirp" class="form-control" rows="10"></textarea>
                                     </div>
                                 </div>
 

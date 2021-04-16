@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
-//const helpers = require('../helpers/imagefilter.helper');
-//const multer = require("multer");
+
+const {createToken} = require('../services/create-token.service');
 
 
 exports.findAllUsers = () => {
@@ -21,30 +21,8 @@ exports.saveUser = (user, req, res) => {
 		password: passHash
 	});
 	return insertUser.save();
-	/*bcrypt.hash(user.password, +process.env.SALT_ROUNDS).then(
-		(hash) => {
-			const usersave = new User({
-				email: user.email,
-				username: user.username,
-				password: hash
-			});
-			usersave.save().then(
-				() => {
-
-					res.status(201).json({
-						message: 'User added successfully!'
-					});
-				}
-			).catch(
-				(error) => {
-					res.status(500).json({
-						error: error
-					});
-				}
-			);
-		}
-	);*/
 }
+
 
 exports.findUser = (req, res) => {
 	User.findOne({email: req.body.email}).then(
@@ -62,6 +40,10 @@ exports.findUser = (req, res) => {
 							error: new Error('Incorrect password!')
 						});
 					}
+					const token = createToken(user);
+					res.cookie('jwt', token, {
+						max_age: 1000 * 60 * 60 * 24 * 30
+					});
 					req.session.user = {
 						id: user._id,
 						name: user.name,

@@ -3,9 +3,11 @@ const {saveChirp} = require('../queries/chirp.queries');
 
 exports.createChirpPage = (req, res) => {
 	let session = req.session;
+
 	res.render('pages/chirp', {
 		title: 'Chirp',
-		session: session
+		session: session,
+		cookie:req.cookies.jwt
 	});
 }
 

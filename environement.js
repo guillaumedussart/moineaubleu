@@ -17,5 +17,8 @@ module.exports = {
 	ports:{
 		http:8088,
 		https:4443
+	},
+	jwt:{
+		secret:'dfvbdcvbdb'
 	}
 }
