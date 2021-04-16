@@ -33,9 +33,7 @@ exports.signUpPage = (req, res) => {
 }
 exports.profilPage = (req, res, next) => {
 	const user = req.params.username;
-	console.log(req.user)
 	const chirps = [];
-	console.log(user)
 	res.render('pages/profile', {
 		title: 'Profile',
 		session: req.session,

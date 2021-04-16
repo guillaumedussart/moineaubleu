@@ -11,7 +11,6 @@ exports.checkAuth = (req, res, next) => {
 	}
 	try {
 		const payload = decode(token, secret);
-		console.log(payload)
 		if (payload && payload.exp <= moment.unix()) {
 			console.log('token expired');
 			res.redirect('/users/signin');
