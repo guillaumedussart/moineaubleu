@@ -1,11 +1,19 @@
 const Chirp = require('../models/Chirp');
+const {saveChirp} = require('../queries/chirp.queries');
 
+exports.createChirpPage = (req, res) => {
+	let session = req.session;
+	res.render('pages/chirp', {
+		title: 'Chirp',
+		session: session
+	});
+}
 
-exports.getAllChirp = (req, res) => {
-    Chirp.find().then(users => {
-        res.render('users-list', { users });
-    }).catch(error => {
-        console.error(error);
-        res.render('users-list');
-    });
+exports.createChirp = async (req, res) => {
+	try {
+		await saveChirp(req, res);
+		res.redirect('/');
+	} catch (e) {
+		console.log(e.message);
+	}
 }

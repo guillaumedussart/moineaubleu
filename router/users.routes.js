@@ -13,7 +13,7 @@ router.get('/signin', signInPage);
 router.post('/signin', signIn);
 router.get('/signup', signUpPage);
 router.post('/signup', signUp);
-router.get('/profile', profilPage);
+router.get('/profile/:username', profilPage);
 router.post('/updateProfil', updateProfil);
 router.get('/logout', logoutProfil);
 

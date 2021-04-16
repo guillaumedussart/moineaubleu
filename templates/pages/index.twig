@@ -1,13 +1,14 @@
 {% extends "../layout.twig" %}
 
+{#<editor-fold desc="Description">#}
 {% block content %}
     <div class="section section-hero section-shaped">
 
-        <div class="container">
+        <div class="container pt-3">
             <h3 class="text-center">Chirps</h3>
             {% for chirp in chirps %}
-            <div class="tweet-container _center"><img src="{{ session.user.image }}"/>
-                <div class="text-container"><strong class="name">{{ chirp.user.name }}</strong>
+            <div class="tweet-container _center"><img src="{{ chirp.user.image }}"/>
+                <div class="text-container"><strong class="name"><a class="text-dark" href="/users/profile/{{ chirp.user.username }}">{{ chirp.user.name }}</a></strong>
                     <div class="nickname">@{{ chirp.user.username }}</div>
                 </div>
                 <div class="chirps container">{{ chirp.text }}</div>
@@ -25,9 +26,9 @@
                 </div>
 
 
-                <button class="follow-button" onclick="followThis(this)">+ Follow</button>
             </div>
         </div>
         {% endfor %}
     </div>
 {% endblock %}
+{#</editor-fold>#}
