@@ -1,18 +1,19 @@
 const app = require('../app');
-const {ports,ssl} = require('../environement');
+const {ports, ssl} = require('../environement');
 const http = require('http');
 const https = require('https');
-const { readFileSync } = require('fs');
+const {readFileSync} = require('fs');
 
 
-http.createServer((req,res)=>{
-	const redirectUrl = `https://${req.headers.host.split(':')[0]}:${ports.https}${req.url}`;
-	res.writeHead(301,{'Location':redirectUrl})
+http.createServer((req, res) => {
+	//console.log(req.url)
+	const redirectUrl = `https://${req.headers.host.split(':')[0]}:${ports.https}`;
+	res.writeHead(301, {'Location': redirectUrl})
 	res.end('ok')
-}).listen(ports.http)
+}).listen(ports.http);
 
 const cert = readFileSync(ssl.cert);
 const key = readFileSync(ssl.key);
 
 
-https.createServer({cert,key},app).listen(ports.https);
+https.createServer({cert, key}, app).listen(ports.https);
