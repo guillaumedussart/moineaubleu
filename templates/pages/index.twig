@@ -7,7 +7,8 @@
         <div class="container pt-3">
             <h3 class="text-center">Chirps</h3>
             {% for chirp in chirps %}
-            <div class="tweet-container _center"><img src="{{ chirp.author.image }}"/>
+            <div class="tweet-container _center">
+                <img src="{% if chirp.author.image is empty %}/static/images/profil/avatar.png{% else %}{{ chirp.author.image }}{% endif %}"/>
                 <div class="text-container"><strong class="name"><a class="text-dark" href="/users/profile/{{ chirp.author.username }}">{{ chirp.author.name }}</a></strong>
                     <div class="nickname">@{{ chirp.author.username }}</div>
                 </div>

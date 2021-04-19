@@ -5,7 +5,6 @@ node_modules
 .env
 .sass-cache
 .idea
-public/uploads/*
 environement.js
 ssl/*
 !ssl/.gitkeep

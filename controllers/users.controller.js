@@ -32,7 +32,6 @@ exports.profilPage = async (req, res, next) => {
 	const user = req.params.username;
 
 	const chirps = [];
-	console.log(await User.find().exec())
 	res.render('pages/profile', {
 		title: 'Profile',
 		session: req.session,
@@ -75,11 +74,12 @@ exports.signIn = async (req, res, next) => {
 	}
 }
 exports.updateProfil = async (req, res, next) => {
-
-	let avatar = req.files.photo;
 	let newFilename;
+
 	try {
 		if (req.files) {
+			let avatar = req.files.photo;
+
 			let pathUploadFile = uploadsFolder + '/' + req.files.photo.name;
 			let ext = path.extname(pathUploadFile);
 

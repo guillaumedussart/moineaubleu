@@ -20,7 +20,6 @@ exports.saveUser = (user, req, res) => {
 		username: user.username,
 		password: passHash
 	});
-	console.log(insertUser)
 	return insertUser.save();
 }
 
@@ -118,9 +117,7 @@ exports.updateProfil = (req, res, img) => {
 					req.session.user.username = req.body.username;
 					req.session.user.email = req.body.email;
 					req.session.user.description = req.body.description;
-					res.status(201).json({
-						message: 'Thing updated successfully!'
-					});
+					res.redirect('/users/profile/'+req.session.user.username);
 				}
 			).catch(
 				(error) => {
