@@ -1,8 +1,11 @@
 const Chirp = require('../models/Chirp');
 const {
+	getOneChirp,
 	saveChirp,
-	deleteOneChirp
+	deleteOneChirp,
+	updateOneChirp
 } = require('../queries/chirps.queries');
+
 
 exports.createChirpPage = (req, res) => {
 	let session = req.session;
@@ -10,7 +13,7 @@ exports.createChirpPage = (req, res) => {
 	res.render('pages/chirp', {
 		title: 'Chirp',
 		session: session,
-		cookie:req.cookies.jwt
+		cookie: req.cookies.jwt
 	});
 }
 
@@ -23,12 +26,29 @@ exports.createChirp = async (req, res) => {
 	}
 }
 
-exports.deleteChirp = async (req,res)=>{
-	try{
+exports.deleteChirp = async (req, res) => {
+	try {
 		await deleteOneChirp(req.params.id);
 		res.redirect('/');
+	} catch (e) {
+
 	}
-	catch (e) {
+}
+
+exports.editChirp = async (req, res) => {
+	const chirp = await getOneChirp(req.params.id);
+	res.render('pages/edit', {
+		title:"Editer un chirp",
+		chirp,
+		session: req.session
+	})
+}
+
+exports.updateChirp = async (req, res) => {
+	try {
+		await updateOneChirp(req, res);
+		res.redirect('/');
+	} catch (e) {
 
 	}
 }

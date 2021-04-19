@@ -13,6 +13,8 @@ exports.findUserByUsername = (username) => {
 	return User.findOne({username}).exec();
 }
 
+
+
 exports.saveUser = (user, req, res) => {
 	const passHash = User.hashPassword(user.password);
 	const insertUser = new User({

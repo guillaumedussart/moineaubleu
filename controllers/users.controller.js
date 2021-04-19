@@ -23,8 +23,7 @@ exports.signUpPage = (req, res) => {
 exports.profilPage = async (req, res, next) => {
 	const username = req.params.username;
 	const userAndChirp = await User.find({username}).populate('chirps').exec();
-
-	chirps = userAndChirp;
+	console.log(userAndChirp)
 	res.render('pages/profile', {
 		title: 'Profile',
 		session: req.session,
