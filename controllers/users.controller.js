@@ -1,19 +1,11 @@
 const User = require('../models/User');
-const {findUser, saveUser, updateProfil} = require('../queries/users.queries');
+const {getOneUser, saveUser, updateProfil} = require('../queries/users.queries');
 const path = require('path');
 const fs = require('fs');
 const sharp = require('sharp');
 const uploadsFolder = path.resolve('public/uploads/');
 
 
-exports.usersPage = (req, res) => {
-	User.find().then(users => {
-		res.render('users-list', {users});
-	}).catch(error => {
-		console.error(error);
-		res.render('users-list');
-	});
-}
 /*
  *
  * page auth return
@@ -29,13 +21,15 @@ exports.signUpPage = (req, res) => {
 	});
 }
 exports.profilPage = async (req, res, next) => {
-	const user = req.params.username;
+	const username = req.params.username;
+	const userAndChirp = await User.find({username}).populate('chirps').exec();
 
-	const chirps = [];
+	chirps = userAndChirp;
 	res.render('pages/profile', {
 		title: 'Profile',
 		session: req.session,
-		url: req.originalUrl
+		url: req.originalUrl,
+		chirpsUser: userAndChirp
 	});
 }
 exports.logoutProfil = (req, res, next) => {
@@ -64,8 +58,7 @@ exports.signUp = async (req, res) => {
 
 exports.signIn = async (req, res, next) => {
 	try {
-		await findUser(req, res);
-
+		await getOneUser(req, res);
 	} catch (e) {
 		res.render('/users/signin', {
 			error: true,
@@ -73,6 +66,7 @@ exports.signIn = async (req, res, next) => {
 		});
 	}
 }
+
 exports.updateProfil = async (req, res, next) => {
 	let newFilename;
 

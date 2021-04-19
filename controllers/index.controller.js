@@ -1,11 +1,8 @@
-const Chirp = require('../models/Chirp');
-const User = require('../models/User');
-const {decode} = require('jwt-simple');
-const {jwt: {secret}} = require('../environement');
+const {getAllChirps} = require('../queries/chirps.queries');
 
 
-exports.homePageCtrl = async(req, res) => {
-    const chirps = await Chirp.find().populate('author').exec();
+exports.indexController = async(req, res) => {
+   const chirps = await getAllChirps();
 
     res.render('pages/index', {
         title: 'Moineau bleu',

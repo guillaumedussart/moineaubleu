@@ -1,35 +1,36 @@
 {% extends "../layout.twig" %}
 
-{#<editor-fold desc="Description">#}
+{# <editor-fold desc="Description"> #}
 {% block content %}
-    <div class="section section-hero section-shaped">
+	<div class="section section-hero section-shaped">
 
-        <div class="container pt-3">
-            <h3 class="text-center">Chirps</h3>
-            {% for chirp in chirps %}
-            <div class="tweet-container _center">
-                <img src="{% if chirp.author.image is empty %}/static/images/profil/avatar.png{% else %}{{ chirp.author.image }}{% endif %}"/>
-                <div class="text-container"><strong class="name"><a class="text-dark" href="/users/profile/{{ chirp.author.username }}">{{ chirp.author.name }}</a></strong>
-                    <div class="nickname">@{{ chirp.author.username }}</div>
-                </div>
-                <div class="chirps container">{{ chirp.text }}</div>
-                <i class="fa fa-heart-o" aria-hidden="true"></i>{# non plein #}
-                <i class="fa fa-heart" aria-hidden="true"></i>
-
-
-                <div class="like" onclick="likeThis(this)">
-                    <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.9649 3.12832C8.29171 -2.5454 0.857422 0.545461 0.857422 6.72603C0.857422 11.3672 11.0494 18.6272 11.9649 19.5712C12.8866 18.6272 22.5717 11.3672 22.5717 6.72603C22.5717 0.592318 15.6449 -2.5454 11.9649 3.12832Z"
-                              fill="#3E4373"/>
-                    </svg>
-                    <i>0</i>
-                    <span></span>
-                </div>
+		<div class="container pt-3">
+			<h3 class="text-center">Chirps</h3>
+			{% for chirp in chirps %}
+			<div class="tweet-container _center" style="margin:20px auto">
+				<img src="{% if chirp.author.image is empty %}/static/images/profil/avatar.png{% else %}{{ chirp.author.image }}{% endif %}"/>
+				<div class="text-container"><strong class="name"><a class="text-dark"
+				                                                    href="/users/profile/{{ chirp.author.username }}">{{ chirp.author.name }}</a></strong>
+					<div class="nickname">@{{ chirp.author.username }}</div>
+				</div>
+				<div class="chirps container">{{ chirp.text }}</div>
+				<i class="fa fa-heart-o" aria-hidden="true"></i>{# non plein #}
+				<i class="fa fa-heart" aria-hidden="true"></i>
 
 
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+				<div class="like" onclick="likeThis(this)">
+					<svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M11.9649 3.12832C8.29171 -2.5454 0.857422 0.545461 0.857422 6.72603C0.857422 11.3672 11.0494 18.6272 11.9649 19.5712C12.8866 18.6272 22.5717 11.3672 22.5717 6.72603C22.5717 0.592318 15.6449 -2.5454 11.9649 3.12832Z"
+						      fill="#3E4373"/>
+					</svg>
+					<i>0</i>
+					<span></span>
+				</div>
+
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
 {% endblock %}
-{#</editor-fold>#}
+{# </editor-fold> #}

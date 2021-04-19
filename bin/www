@@ -8,8 +8,8 @@ const {readFileSync} = require('fs');
 http.createServer((req, res) => {
 	//console.log(req.url)
 	const redirectUrl = `https://${req.headers.host.split(':')[0]}:${ports.https}`;
-	res.writeHead(301, {'Location': redirectUrl})
-	res.end('ok')
+	res.writeHead(301, {'Location': redirectUrl});
+	res.end('ok');
 }).listen(ports.http);
 
 const cert = readFileSync(ssl.cert);

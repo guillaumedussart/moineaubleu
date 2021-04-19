@@ -1,5 +1,8 @@
 const Chirp = require('../models/Chirp');
-const {saveChirp} = require('../queries/chirp.queries');
+const {
+	saveChirp,
+	deleteOneChirp
+} = require('../queries/chirps.queries');
 
 exports.createChirpPage = (req, res) => {
 	let session = req.session;
@@ -17,5 +20,15 @@ exports.createChirp = async (req, res) => {
 		res.redirect('/');
 	} catch (e) {
 		console.log(e.message);
+	}
+}
+
+exports.deleteChirp = async (req,res)=>{
+	try{
+		await deleteOneChirp(req.params.id);
+		res.redirect('/');
+	}
+	catch (e) {
+
 	}
 }

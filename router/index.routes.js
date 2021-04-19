@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const {
-  homePageCtrl,
+  indexController,
 } = require('../controllers/index.controller');
 
-router.get('/', homePageCtrl);
+router.get('/', indexController);
 
 module.exports = router;

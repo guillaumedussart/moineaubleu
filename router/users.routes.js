@@ -16,7 +16,7 @@ router.post('/signin', signIn);
 router.get('/signup', signUpPage);
 router.post('/signup', signUp);
 router.get('/profile/:username', checkAuth, profilPage);
-router.post('/updateProfil', updateProfil);
-router.get('/logout', logoutProfil);
+router.post('/updateProfil',checkAuth, updateProfil);
+router.get('/logout',checkAuth, logoutProfil);
 
 module.exports = router;

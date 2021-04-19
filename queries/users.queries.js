@@ -24,7 +24,7 @@ exports.saveUser = (user, req, res) => {
 }
 
 
-exports.findUser = (req, res) => {
+exports.getOneUser = (req, res) => {
 	User.findOne({email: req.body.email}).then(
 		(user) => {
 			if (!user) {
@@ -51,10 +51,7 @@ exports.findUser = (req, res) => {
 						username: user.username,
 						image: user.image
 					}
-					/*res.status(200).json({
-						userId: user._id,
-						token: 'token'
-					});*/
+
 					res.redirect('/');
 				}
 			).catch(
