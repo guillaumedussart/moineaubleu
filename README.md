@@ -1,0 +1,1 @@
+## Chirpster### For launch this project>$ `git clone git@github.com:dwaps/touiteur-diginamic.git && git checkout dussart-guillaume`>$ `npm ci && grunt`>$ `cp environement.js.example environement.js`> >And use your connection parameters.
