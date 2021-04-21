@@ -1,11 +1,18 @@
 <nav>
-    <div class="main-menu">
+	<div class="main-menu">
+		<div class="input-group rounded">
+			<input type="search" id="search-user" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onkeydown="searchUser(this)"/>
+			<span class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+            </span>
+		</div>
+		<div id="search-result"></div>
 
-        {% if session.user is not empty %}
-            <a href="/chirps/new" class="bt-touite">Chirp</a>
-            <a href="/users/logout" class="bt-touite">Logout</a>
-        {% else %}
-            <a href="/users/signin" class="bt-touite">Login</a>
-        {% endif %}
-    </div>
+		{% if session.user is not empty %}
+			<a href="/chirps/new" class="bt-touite">Chirp</a>
+			<a href="/users/logout" class="bt-touite">Logout</a>
+		{% else %}
+			<a href="/users/signin" class="bt-touite">Login</a>
+		{% endif %}
+	</div>
 </nav>

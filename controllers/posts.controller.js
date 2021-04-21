@@ -8,7 +8,7 @@ const fs = require('fs');
 const sharp = require('sharp');
 const uploadsFolder = path.resolve('public/uploads/');
 
-
+const User = require('../models/User');
 exports.signUp = async (req, res) => {
 	try {
 		await saveUser(req.body, req, res);
@@ -78,5 +78,12 @@ exports.followUser = async (req, res) => {
 	} catch (e) {
 
 	}
-	console.log(req.body)
+}
+
+exports.searchProfil = async (req,res)=>{
+	const user = await User.find({username:{$regex:`${req.body.search}`}}).exec();
+	console.log(user)
+	res.status(200).json({
+		response: user
+	});
 }

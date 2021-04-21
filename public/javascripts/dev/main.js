@@ -107,26 +107,19 @@ function likeThis(button) {
     });
 }); */
 
+var result = $('#search-result');
 
-function followThis(button) {
+var searchUser = (valueSearch)=>{
+	var inputSearch = $(valueSearch).val();
 
+	$.ajax({
+		url:'/users/search',
+		type:'post',
+		data: {search:inputSearch},
+		dataType: 'json',
+		success:function (data) {
+			console.log(data);
+		}
 
-	$(button).animate({width: '-=10px'}, 100, 'easeInCubic', function () {
-	});
-
-
-	$(button).animate({width: '+=45px', left: '-=15px'}, 600, 'easeInOutBack', function () {
-
-
-		$(button).css("color", "#fff");
-		$(button).text("Following");
-
-		// Animate the background transition from white to green. Using JQuery Color
-		$(button).animate({
-			backgroundColor: "#2EB82E",
-			borderColor: "#2EB82E"
-		}, 1000);
-
-
-	});
+	})
 }

@@ -11,7 +11,8 @@ const {
 	signUp,
 	signIn,
 	updateProfil,
-	followUser
+	followUser,
+	searchProfil
 } = require('../controllers/posts.controller');
 
 router.get('/signin', signInPage);
@@ -22,5 +23,7 @@ router.get('/profile/:username', checkAuth, profilPage);
 router.post('/updateProfil',checkAuth, updateProfil);
 router.get('/logout',checkAuth, logoutProfil);
 router.post('/follow',checkAuth, followUser);
+
+router.post('/search',checkAuth,searchProfil)
 
 module.exports = router;

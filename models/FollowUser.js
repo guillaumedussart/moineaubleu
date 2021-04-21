@@ -1,16 +1,16 @@
-const {Schema,model} = require('mongoose');
+const {Schema, model} = require('mongoose');
 
 const followUserSchema = new Schema({
-	user_id: [{
+	user_id: {
 		type: Schema.Types.ObjectId,
-		required:true,
-		ref:"User"
-	}],
-	follower_id: [{
+		required: true,
+		ref: "User"
+	},
+	follower_id: {
 		type: Schema.Types.ObjectId,
-		required:true,
-		ref:"Chirp"
-	}]
+		required: true,
+		ref: "Chirp"
+	}
 });
 
 
