@@ -13,5 +13,6 @@ router.post('/new', checkAuth,createChirp);
 router.get('/edit/:id', checkAuth,editChirp);
 router.post('/edit/:id', checkAuth,updateChirp);
 router.get('/delete/:id', checkAuth,deleteChirp);
+router.delete('/delete/:id', checkAuth,deleteChirp);
 
 module.exports = router;

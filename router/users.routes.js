@@ -4,12 +4,15 @@ const {checkAuth} = require('../middleware/check-auth.middleware');
 const {
 	signInPage,
 	signUpPage,
-	signUp,
-	signIn,
 	profilPage,
-	updateProfil,
 	logoutProfil
 } = require('../controllers/users.controller');
+const {
+	signUp,
+	signIn,
+	updateProfil,
+	followUser
+} = require('../controllers/posts.controller');
 
 router.get('/signin', signInPage);
 router.post('/signin', signIn);
@@ -18,5 +21,6 @@ router.post('/signup', signUp);
 router.get('/profile/:username', checkAuth, profilPage);
 router.post('/updateProfil',checkAuth, updateProfil);
 router.get('/logout',checkAuth, logoutProfil);
+router.post('/follow',checkAuth, followUser);
 
 module.exports = router;

@@ -40,7 +40,7 @@ userSchema.virtual('chirps', {
 	ref: 'Chirp',
 	localField: '_id',
 	foreignField: 'author'
-})
+});
 
 userSchema.statics.hashPassword = (password) => {
 	return bcrypt.hashSync(password, hashRounds);

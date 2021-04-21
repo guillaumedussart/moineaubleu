@@ -14,7 +14,7 @@ exports.updateOneChirp = (req, res) => {
 	const chirp = {
 		text: req.body.chirp
 	}
-	Chirp.updateOne({_id:req.body.id_chirp},chirp,{new:true}).exec();
+	Chirp.updateOne({_id:req.body.id_chirp},chirp).exec();
 }
 
 exports.saveChirp = (req, res) => {
